@@ -1,0 +1,39 @@
+server:
+  port: 8080
+
+spring:
+  profiles:
+    active: dev
+  main:
+    allow-circular-references: true
+  datasource:
+    druid:
+      driver-class-name: ${piano.datasource.driver-class-name}
+      url: jdbc:mysql://${piano.datasource.host}:${piano.datasource.port}/${piano.datasource.database}
+      username: ${piano.datasource.username}
+      password: ${piano.datasource.password}
+
+mybatis:
+
+  mapper-locations: classpath:mapper/*.xml
+  type-aliases-package: com.piano.entity
+  configuration:
+
+    map-underscore-to-camel-case: true
+
+logging:
+  level:
+    com:
+      sky:
+        mapper: debug
+        service: info
+        controller: info
+
+sky:
+  jwt:
+    # set jwt secret key
+    admin-secret-key: emma
+    # set jwt expired time
+    admin-ttl: 7200000
+    # set the token name from frontend
+    admin-token-name: token
