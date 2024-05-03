@@ -1,7 +1,10 @@
 package com.piano.service.impl;
 
 import com.piano.constant.MessageConstant;
+import com.piano.constant.PasswordConstant;
 import com.piano.constant.StatusConstant;
+import com.piano.context.BaseContext;
+import com.piano.dto.EmployeeDTO;
 import com.piano.dto.EmployeeLoginDTO;
 import com.piano.entity.Employee;
 import com.piano.exception.AccountLockedException;
@@ -9,9 +12,12 @@ import com.piano.exception.AccountNotFoundException;
 import com.piano.exception.PasswordErrorException;
 import com.piano.mapper.EmployeeMapper;
 import com.piano.service.EmployeeService;
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.DigestUtils;
+
+import java.time.LocalDateTime;
 
 @Service
 public class EmployeeServiceImpl implements EmployeeService {
@@ -52,6 +58,23 @@ public class EmployeeServiceImpl implements EmployeeService {
         }
 
         return employee;
+    }
+
+    @Override
+    public void addEmployee(EmployeeDTO employeeDTO) {
+
+        Employee employee = new Employee();
+        BeanUtils.copyProperties(employeeDTO, employee);
+        employee.setStatus(StatusConstant.ENABLE);
+        employee.setPassword(PasswordConstant.DEFAULT_PASSWORD);
+        employee.setCreateTime(LocalDateTime.now());
+        employee.setUpdateTime(LocalDateTime.now());
+
+        //
+        employee.setCreateUser(BaseContext.getCurrentId());
+        employee.setUpdateUser(BaseContext.getCurrentId());
+
+        employeeMapper.insert(employee);
     }
 
 }

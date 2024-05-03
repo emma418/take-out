@@ -1,6 +1,7 @@
 package com.piano.controller.admin;
 
 import com.piano.constant.JwtClaimsConstant;
+import com.piano.dto.EmployeeDTO;
 import com.piano.dto.EmployeeLoginDTO;
 import com.piano.entity.Employee;
 import com.piano.properties.JwtProperties;
@@ -8,6 +9,7 @@ import com.piano.result.Result;
 import com.piano.service.EmployeeService;
 import com.piano.utils.JwtUtil;
 import com.piano.vo.EmployeeLoginVO;
+import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -68,6 +70,16 @@ public class EmployeeController {
      */
     @PostMapping("/logout")
     public Result<String> logout() {
+        return Result.success();
+    }
+
+    @PostMapping
+    @ApiOperation("add a new employee")
+    public Result addEmployee(@RequestBody EmployeeDTO employeeDTO) {
+        log.info("add a new employee: {}", employeeDTO);
+
+        employeeService.addEmployee(employeeDTO);
+
         return Result.success();
     }
 

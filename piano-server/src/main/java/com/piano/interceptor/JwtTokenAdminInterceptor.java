@@ -1,6 +1,7 @@
 package com.piano.interceptor;
 
 import com.piano.constant.JwtClaimsConstant;
+import com.piano.context.BaseContext;
 import com.piano.properties.JwtProperties;
 import com.piano.utils.JwtUtil;
 import io.jsonwebtoken.Claims;
@@ -46,6 +47,7 @@ public class JwtTokenAdminInterceptor implements HandlerInterceptor {
             log.info("jwt verification:{}", token);
             Claims claims = JwtUtil.parseJWT(jwtProperties.getAdminSecretKey(), token);
             Long empId = Long.valueOf(claims.get(JwtClaimsConstant.EMP_ID).toString());
+            BaseContext.setCurrentId(empId);
             log.info("current employee id：", empId);
             // if valid
             return true;
