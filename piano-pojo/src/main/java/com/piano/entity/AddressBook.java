@@ -29,9 +29,9 @@ public class AddressBook implements Serializable {
     private String city;
 
     private String street;
+    private String unit;
 
     private String postalCode;
-
 
     private Integer isDefault;
 }

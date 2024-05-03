@@ -18,18 +18,17 @@ mybatis:
   mapper-locations: classpath:mapper/*.xml
   type-aliases-package: com.piano.entity
   configuration:
-
     map-underscore-to-camel-case: true
 
 logging:
   level:
     com:
-      sky:
+      piano:
         mapper: debug
         service: info
         controller: info
 
-sky:
+piano:
   jwt:
     # set jwt secret key
     admin-secret-key: emma

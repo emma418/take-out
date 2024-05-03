@@ -20,10 +20,10 @@ public class EmployeeLoginVO implements Serializable {
     private Long id;
 
     @ApiModelProperty("username")
-    private String userName;
+    private String username;
 
     @ApiModelProperty("full name")
-    private String name;
+    private String fullName;
 
     @ApiModelProperty("jwt token")
     private String token;

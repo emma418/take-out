@@ -39,7 +39,8 @@ public class EmployeeServiceImpl implements EmployeeService {
         }
 
         // compare password
-        // TODO apply md5 encode later
+        // apply md5 encode
+        password = DigestUtils.md5DigestAsHex(password.getBytes());
         if (!password.equals(employee.getPassword())) {
             // throw exception when password is incorrect
             throw new PasswordErrorException(MessageConstant.PASSWORD_ERROR);

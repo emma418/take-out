@@ -9,14 +9,13 @@ public class EmployeeDTO implements Serializable {
 
     private Long id;
 
-    private String username;
+    private String fullName;
 
-    private String name;
+    private String username;
 
     private String phone;
 
-    private String sex;
+    private String gender;
 
-    private String idNumber;
 
 }

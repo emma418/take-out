@@ -7,7 +7,7 @@ import java.io.Serializable;
 @Data
 public class EmployeePageQueryDTO implements Serializable {
 
-    private String name;
+    private String fullName;
 
     private int page;
 
