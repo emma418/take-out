@@ -3,8 +3,10 @@ package com.piano.controller.admin;
 import com.piano.constant.JwtClaimsConstant;
 import com.piano.dto.EmployeeDTO;
 import com.piano.dto.EmployeeLoginDTO;
+import com.piano.dto.EmployeePageQueryDTO;
 import com.piano.entity.Employee;
 import com.piano.properties.JwtProperties;
+import com.piano.result.PageResult;
 import com.piano.result.Result;
 import com.piano.service.EmployeeService;
 import com.piano.utils.JwtUtil;
@@ -12,10 +14,7 @@ import com.piano.vo.EmployeeLoginVO;
 import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -81,6 +80,15 @@ public class EmployeeController {
         employeeService.addEmployee(employeeDTO);
 
         return Result.success();
+    }
+
+    @GetMapping("/page")
+    @ApiOperation(("employee query"))
+    public Result<PageResult> employeeQuery(EmployeePageQueryDTO employeePageQueryDTO) {
+        log.info("employee query parameters: {}", employeePageQueryDTO);
+        PageResult pageResult = employeeService.employeeQuery(employeePageQueryDTO);
+
+        return Result.success(pageResult);
     }
 
 }
