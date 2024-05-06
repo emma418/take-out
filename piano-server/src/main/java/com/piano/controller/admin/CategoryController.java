@@ -1,15 +1,14 @@
 package com.piano.controller.admin;
 
 import com.piano.dto.CategoryDTO;
+import com.piano.dto.CategoryPageQueryDTO;
+import com.piano.result.PageResult;
 import com.piano.result.Result;
 import com.piano.service.CategoryService;
 import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/admin/category")
@@ -28,5 +27,16 @@ public class CategoryController {
 
         return Result.success();
     }
+
+    @GetMapping("/page")
+    @ApiOperation("query category")
+    public Result<PageResult> categoryQuery(CategoryPageQueryDTO categoryPageQueryDTO) {
+        log.info("query category parameters: {}", categoryPageQueryDTO);
+
+        PageResult pageResult = categoryService.categoryQuery(categoryPageQueryDTO);
+
+        return Result.success(pageResult);
+    }
+
 
 }
