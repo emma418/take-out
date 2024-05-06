@@ -5,8 +5,8 @@
     <update id="update">
         update employee
         <set>
-            <if test="fullName != null">full_name = #{fullName},</if>
-            <if test="username != null">username = #{username},</if>
+            <if test="fullName != null and fullName != ''" >full_name = #{fullName},</if>
+            <if test="username != null and username != ''">username = #{username},</if>
             <if test="password != null">password = #{password},</if>
             <if test="phone != null">phone = #{phone},</if>
             <if test="gender != null">gender = #{gender},</if>
