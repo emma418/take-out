@@ -33,6 +33,6 @@ piano:
     # set jwt secret key
     admin-secret-key: emma
     # set jwt expired time
-    admin-ttl: 7200000
+    admin-ttl: 72000000
     # set the token name from frontend
     admin-token-name: token
