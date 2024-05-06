@@ -3,6 +3,7 @@ package com.piano.mapper;
 import com.github.pagehelper.Page;
 import com.piano.dto.CategoryPageQueryDTO;
 import com.piano.entity.Category;
+import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
 
@@ -16,4 +17,7 @@ public interface CategoryMapper {
     Page<Category> categoryQuery(CategoryPageQueryDTO categoryPageQueryDTO);
 
     void update(Category category);
+
+    @Delete("delete from category where id = #{id}")
+    void delete(Long id);
 }
