@@ -47,5 +47,14 @@ public class CategoryController {
         return Result.success();
     }
 
+    @PutMapping
+    public Result updateCategory(@RequestBody CategoryDTO categoryDTO) {
+        log.info("update a category: {}", categoryDTO);
+
+        categoryService.updateCategory(categoryDTO);
+
+        return Result.success();
+    }
+
 
 }
