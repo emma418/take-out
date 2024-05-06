@@ -16,5 +16,5 @@ public class CategoryDTO implements Serializable {
     private String name;
 
     // order
-    private Integer sort;
+//    private Integer sort;
 }

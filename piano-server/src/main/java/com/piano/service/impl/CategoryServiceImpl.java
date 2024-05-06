@@ -47,4 +47,14 @@ public class CategoryServiceImpl implements CategoryService {
 
         return new PageResult(total, result);
     }
+
+    @Override
+    public void updateStatus(Integer status, Long id) {
+        Category category = Category.builder()
+                .status(status)
+                .id(id)
+                .build();
+
+        categoryMapper.update(category);
+    }
 }

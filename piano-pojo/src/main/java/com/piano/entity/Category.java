@@ -21,7 +21,7 @@ public class Category implements Serializable {
 
     private String name;
 
-    private Integer sort;
+//    private Integer sort;
 
     private Integer status;
 

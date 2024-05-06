@@ -38,5 +38,14 @@ public class CategoryController {
         return Result.success(pageResult);
     }
 
+    @PostMapping("/status/{status}")
+    public Result updateStatus(@PathVariable Integer status, Long id) {
+        log.info("category parameters: {}, {}", status, id);
+
+        categoryService.updateStatus(status, id);
+
+        return Result.success();
+    }
+
 
 }
