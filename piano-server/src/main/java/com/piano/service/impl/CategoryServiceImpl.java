@@ -2,11 +2,15 @@ package com.piano.service.impl;
 
 import com.github.pagehelper.Page;
 import com.github.pagehelper.PageHelper;
+import com.piano.constant.MessageConstant;
 import com.piano.context.BaseContext;
 import com.piano.dto.CategoryDTO;
 import com.piano.dto.CategoryPageQueryDTO;
 import com.piano.entity.Category;
+import com.piano.exception.DeletionNotAllowedException;
 import com.piano.mapper.CategoryMapper;
+import com.piano.mapper.ComboMapper;
+import com.piano.mapper.DishMapper;
 import com.piano.result.PageResult;
 import com.piano.service.CategoryService;
 import org.springframework.beans.BeanUtils;
@@ -20,6 +24,10 @@ import java.util.List;
 public class CategoryServiceImpl implements CategoryService {
     @Autowired
     private CategoryMapper categoryMapper;
+    @Autowired
+    private DishMapper dishMapper;
+    @Autowired
+    private ComboMapper comboMapper;
 
 
     @Override
@@ -72,6 +80,18 @@ public class CategoryServiceImpl implements CategoryService {
 
     @Override
     public void delete(Long id) {
+        Integer count = dishMapper.countByCategoryId(id);
+
+        if (count > 0) {
+            throw new DeletionNotAllowedException(MessageConstant.CATEGORY_BE_RELATED_BY_DISH);
+        }
+
+        count = comboMapper.countByCategoryId(id);
+
+        if(count > 0) {
+            throw new DeletionNotAllowedException(MessageConstant.CATEGORY_BE_RELATED_BY_SETMEAL);
+        }
+
         categoryMapper.delete(id);
     }
 }
