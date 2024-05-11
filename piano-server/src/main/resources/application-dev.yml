@@ -6,3 +6,8 @@ piano:
     database: piano_take_out
     username: root
     password: emma12345
+  aws:
+    region: us-east-2
+    access-key: AKIAZQ3DPYIAJPJ5DA6T
+    secret-access-key: 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
+    bucket-name: piano-take-out
