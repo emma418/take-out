@@ -36,10 +36,3 @@ piano:
     admin-ttl: 72000000
     # set the token name from frontend
     admin-token-name: token
-  aws:
-    region: ${piano.aws.region}
-    access-key: ${piano.aws.access-key}
-    secret-access-key: ${piano.aws.secret-access-key}
-    bucket-name: ${piano.aws.bucket-name}
-
-
