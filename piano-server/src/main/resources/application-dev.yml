@@ -1,8 +1,0 @@
-piano:
-  datasource:
-    driver-class-name: com.mysql.cj.jdbc.Driver
-    host: localhost
-    port: 3306
-    database: piano_take_out
-    username: root
-    password: emma12345
