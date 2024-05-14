@@ -4,6 +4,7 @@ import com.piano.dto.DishDTO;
 import com.piano.entity.Dish;
 import com.piano.result.Result;
 import com.piano.service.DishService;
+import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -19,6 +20,7 @@ public class DishController {
     private DishService dishService;
 
     @PostMapping
+    @ApiOperation("add a dish")
     public Result addDish(@RequestBody DishDTO dishDTO) {
         log.info("addDish: {}", dishDTO);
 

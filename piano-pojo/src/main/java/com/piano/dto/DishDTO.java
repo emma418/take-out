@@ -27,8 +27,8 @@ public class DishDTO implements Serializable {
     private Integer status;
 
     private Integer isCustomizable;
-    // flavor
-    private List<Ingredient> ingredients = new ArrayList<>();
-    private List<DishIngredient> dishIngredients = new ArrayList<>();
+
+    private List<DishIngredientDTO> dishIngredientDTOS = new ArrayList<>();
+
 
 }
