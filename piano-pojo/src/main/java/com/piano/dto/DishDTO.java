@@ -1,6 +1,8 @@
 package com.piano.dto;
 
 import com.piano.entity.DishFlavor;
+import com.piano.entity.DishIngredient;
+import com.piano.entity.Ingredient;
 import lombok.Data;
 import java.io.Serializable;
 import java.math.BigDecimal;
@@ -23,7 +25,10 @@ public class DishDTO implements Serializable {
     private String description;
     // 0: close 1: open
     private Integer status;
+
+    private Integer isCustomizable;
     // flavor
-    private List<DishFlavor> flavors = new ArrayList<>();
+    private List<Ingredient> ingredients = new ArrayList<>();
+    private List<DishIngredient> dishIngredients = new ArrayList<>();
 
 }

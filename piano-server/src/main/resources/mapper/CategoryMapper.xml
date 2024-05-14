@@ -24,4 +24,11 @@
             </if>
         </where>
     </select>
+    <select id="list" resultType="com.piano.entity.Category">
+        select * from category
+        where status = 1
+        <if test="type != null">
+            and type = #{type}
+        </if>
+    </select>
 </mapper>

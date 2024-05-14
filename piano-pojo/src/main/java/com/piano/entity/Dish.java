@@ -30,6 +30,7 @@ public class Dish implements Serializable {
     private String description;
 
     private Integer status;
+    private Integer is_Customizable;
 
     private LocalDateTime createTime;
 

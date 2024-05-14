@@ -2,6 +2,7 @@ package com.piano.controller.admin;
 
 import com.piano.dto.CategoryDTO;
 import com.piano.dto.CategoryPageQueryDTO;
+import com.piano.entity.Category;
 import com.piano.result.PageResult;
 import com.piano.result.Result;
 import com.piano.service.CategoryService;
@@ -9,6 +10,8 @@ import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("/admin/category")
@@ -66,6 +69,16 @@ public class CategoryController {
 
         return Result.success();
 
+    }
+
+    @GetMapping("/list")
+    @ApiOperation("get category list by type")
+    public Result<List<Category>> list(Integer type) {
+        log.info("list a category");
+
+        List<Category> list = categoryService.list(type);
+
+        return Result.success(list);
     }
 
 

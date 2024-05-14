@@ -23,6 +23,7 @@ public class MessageConstant {
     public static final String DISH_BE_RELATED_BY_SETMEAL = "The current dish is associated with a combo and cannot be deleted.";
     public static final String ORDER_STATUS_ERROR = "Order Status Error";
     public static final String ORDER_NOT_FOUND = "Order does not exist";
+    public static final String INGREDIENT_BE_RELATED_BY_DISH = "The current ingredient is associated with a dish and cannot be deleted.";
 
     public static final String ALREADY_EXISTS = "already exists";
 }
